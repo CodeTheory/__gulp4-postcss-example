@@ -1,1 +1,18 @@
-@import"partials/test.css";.test{background:#000;background:rgba(0,0,0,.1)}.test .test2{color:black;z-index:1;text-decoration:none;font-weight:700;font-size:14px;background:black;border:1px solid #000}
+.test {
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.test {
+  background: #000000;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.test .test2 {
+  color: black;
+  z-index: 1;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  background: black;
+  border: 1px solid #000;
+}

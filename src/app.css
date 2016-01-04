@@ -1,4 +1,4 @@
-@import "partials/test.css";
+@import "partials/_test.css";
 
 .test {
   background: color(black alpha(10%));

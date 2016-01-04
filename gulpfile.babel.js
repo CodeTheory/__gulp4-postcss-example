@@ -5,8 +5,11 @@ import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import cssnext from 'postcss-cssnext';
 import nested from 'postcss-nested';
-import minify from 'csswring';
+import atImport from 'postcss-import';
+import mqpacker from 'css-mqpacker';
+import minify from 'cssnano';
 import simpleVars from 'postcss-simple-vars';
+import rename from 'gulp-rename';
 
 const sources = {
   // Build Dirs
@@ -14,7 +17,12 @@ const sources = {
   dest: 'dist',
   
   // File Sources
-  css: 'src/**/*.css'
+  cssBuild: [
+    'src/**/*.css',
+    '!src/**/_*.css'
+  ],
+  
+  cssWatch: 'src/**/*.css'
 };
 
 
@@ -24,20 +32,24 @@ export const clean = () => del([sources.dest]);
 
 // PostCSS processors
 const processors = [
-  autoprefixer({ browsers: ['last 2 versions'] }),
+  atImport,
+  simpleVars,
   cssnext,
   nested,
-  simpleVars,
-  minify
+  autoprefixer({ browsers: ['last 2 versions'] }),
+  mqpacker
 ];
 
 // Main build task
-export const build = () => src(sources.css) 
+export const build = () =>  src(sources.cssBuild)
   .pipe(postcss(processors))
+  .pipe(dest(sources.dest))
+  .pipe(postcss([minify]))
+  .pipe(rename({suffix: '.min'}))
   .pipe(dest(sources.dest));
 
 // Watch Source Files
-export const watchSrc = () => watch(sources.css, build);
+export const watchSrc = () => watch(sources.cssWatch, build);
 
 // Dist Tasks
 export const dist = series(clean, build);
