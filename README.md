@@ -16,7 +16,7 @@ gulp-cli version 1.1.0
 node v4 
 ```
 
-First off, you'll need to modules installed from npm, so run `npm install`.
+First off, you'll need to install the modules from npm, so run `npm install`.
 After that you're pretty much good to go. Play around with the files in the `src` directory and run `gulp` to build and watch the files you're changing.
 
 If you want to build the files without the watch task, you can run `gulp dist`.
