@@ -11,23 +11,16 @@ import minify from 'cssnano';
 import simpleVars from 'postcss-simple-vars';
 import rename from 'gulp-rename';
 
-const sources = {
-  // Build Dirs
-  src: 'src',
-  dest: 'dist',
-  
-  // File Sources
-  cssBuild: [
-    'src/**/*.css',
-    '!src/**/_*.css'
-  ],
-  
-  cssWatch: 'src/**/*.css'
-};
+
+// Sources
+const SRC_DIR = 'src';
+const DEST_DIR = 'dist';
+const CSS_GLOB = `${SRC_DIR}/**/*.css`;
+const CSS_PARTIALS = `!${SRC_DIR}/**/_*.css`;
 
 
 // Clean dist directory
-export const clean = () => del([sources.dest]);
+export const clean = () => del([DEST_DIR]);
 
 
 // PostCSS processors
@@ -41,15 +34,15 @@ const processors = [
 ];
 
 // Main build task
-export const build = () =>  src(sources.cssBuild)
+export const build = () =>  src([CSS_GLOB, CSS_PARTIALS])
   .pipe(postcss(processors))
-  .pipe(dest(sources.dest))
+  .pipe(dest(DEST_DIR))
   .pipe(postcss([minify]))
   .pipe(rename({suffix: '.min'}))
-  .pipe(dest(sources.dest));
+  .pipe(dest(DEST_DIR));
 
 // Watch Source Files
-export const watchSrc = () => watch(sources.cssWatch, build);
+export const watchSrc = () => watch(CSS_GLOB, build);
 
 // Dist Tasks
 export const dist = series(clean, build);
