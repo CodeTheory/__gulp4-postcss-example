@@ -6,6 +6,12 @@ This repo is here to show off the brilliant the technology we're able to use tod
 Please feel free to use any of this code on your own system. This repo is a way for me to contribute to the wonderful community that exists through open source code. Thank you to all those that also contribute!
 
 
+##### Why use PostCSS and not SASS/LESS etc?
+Since posting this repo I've had quite a few questions as to why anyone should use PostCSS over SASS at all. The answer is to go with what you prefer. The reason that I've given others as to why I've chosen to experiment with PostCSS lately is that I love some of the features that it supports.
+
+PostCSS doesn't have to be anything you don't want it to be. Pick and chose the extensions you want to use, remove the ones you don't want and extend over time if you wish. Generally it's just a great ecosystem that's highly extendible. The speed of it is also nice too. 
+
+
 ---
 ### Installation
 
