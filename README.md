@@ -37,7 +37,7 @@ If you have anything to contribute, please submit a pull request!
 
 ### Todo
 - Write a more detailed README, listing the modules used and what they're for.
-- Add a linter
+- Add a linter.
 - Create a markup file using styles processed through the PostCSS/Gulp build system.
 - Investigate more PostCSS modules that may be useful to the build process. 
 
